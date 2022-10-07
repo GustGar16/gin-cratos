@@ -1,6 +1,6 @@
 package request
 
-type TestRequest struct {
+type SaleRequest struct {
 	ProccesingCode   string `json:"proccesing_code,omitempty"`
 	Amount           string `json:"amount,omitempty"`
 	SystemTrace      string `json:"system_trace,omitempty"`

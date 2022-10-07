@@ -1,6 +1,7 @@
 package responses
 
-type TestResponse struct {
+type SaleResponse struct {
+	MTI                 string `json:"mti"`
 	ProccesingCode      string `json:"proccesing_code"`
 	Amount              string `json:"amount"`
 	TransmitionDataTime string `json:"transmition_time"`
