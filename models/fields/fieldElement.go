@@ -15,6 +15,7 @@ func NewFieldElement() {
 	FieldElement[22] = FieldData{Type: "n", Size: 3, Fixed: true, Mandatory: false, SizePos: "", Usage: "Point of service entry mode"}
 	FieldElement[25] = FieldData{Type: "n", Size: 3, Fixed: true, Mandatory: false, SizePos: "", Usage: "Point of service condition mode"}
 	FieldElement[32] = FieldData{Type: "n", Size: 11, Fixed: true, Mandatory: false, SizePos: "LL", Usage: "Acquiring institution identification code"}
+	FieldElement[35] = FieldData{Type: "ans", Size: 37, Fixed: true, Mandatory: false, SizePos: "LL", Usage: "Track 2 Data"}
 	FieldElement[37] = FieldData{Type: "an", Size: 12, Fixed: true, Mandatory: true, SizePos: "", Usage: "Retrieval reference number"}
 	FieldElement[38] = FieldData{Type: "an", Size: 6, Fixed: true, Mandatory: false, SizePos: "", Usage: "Authorization identification response"}
 	FieldElement[39] = FieldData{Type: "an", Size: 2, Fixed: true, Mandatory: false, SizePos: "", Usage: "Response code"}
