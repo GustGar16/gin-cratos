@@ -12,14 +12,15 @@ type SaleResponse struct {
 	MerchantType        string `json:"merchant_type"`
 	ServiceEntry        string `json:"service_entry"`
 	ServiceCondition    string `json:"service_condition"`
-	AcquiringIDCode     string `json:"acquiring_id_code,omitempty"`
-	Track2Data          string `json:"track_two,omitempty"`
+	AcquiringIDCode     string `json:"acquiring_id_code"`
+	Track2Data          string `json:"track_two"`
 	RetrievalReference  string `json:"retrieval_ref,omitempty"`
 	AuthIDResponse      string `json:"authid_response,omitempty"`
 	ResponseCode        string `json:"response_code,omitempty"`
 	CardAcceptTerminal  string `json:"card_acceptor,omitempty"`
 	CardAcceptorCode    string `json:"card_acceptor_code,omitempty"`
 	AdditionalResponse  string `json:"additonal_response,omitempty"`
+	RetailerData        string `json:"retailer_data,omitempty"`
 	CurrencyCode        string `json:"currency_code,omitempty"`
 	AdditionalAmounts   string `json:"additional_amounts,omitempty"`
 	TerminalData        string `json:"terminal_data,omitempty"`

@@ -7,5 +7,5 @@ import (
 )
 
 func MainRoute(router *gin.Engine) {
-	router.POST("/sale", controllers.SaleMessage())
+	router.POST("/cargo", controllers.NewCargo())
 }

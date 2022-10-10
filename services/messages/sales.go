@@ -1,68 +1,48 @@
 package messages
 
 import (
-	"fmt"
 	"gin-Cratos/request"
-	"gin-Cratos/responses"
-	"strings"
-	"time"
 )
 
-var campo4, campo7, campo12, campo13, campo17 string
-
-var t = time.Now()
-
-func formateaCampo4(value string) {
-	campo4 = strings.Replace(value, ".", "", -1)
-	campo4 = fmt.Sprintf("%012s", campo4)
-
+func NewCargoMessage(req request.CargoRequest) {
+	FormateaCampo3(req.Tipo)
+	FormateaCampo4(req.Monto)
+	FormateaCampo7()
+	FormateaCampo12()
+	FormateaCampo11()
+	FormateaCampo13()
+	FormateaCampo17()
+	FormateaCampo18()
+	FormateaCampo22(req.Tipo)
+	FormateaCampo25()
+	FormateaCampo32("12")
+	FormateaCampo35(req.Tarjeta.Pan, req.Tarjeta.ExpAnio, req.Tarjeta.ExpMes)
+	FormateaCampo37()
+	FormateaCampo48(req.Afiliacion)
+	FormateaCampo49(req.Moneda)
 }
 
-func formateaCampo7() {
-	campo7 = fmt.Sprintf("%02d%02d%02d%02d%02d",
-		t.Month(), t.Day(),
-		t.Hour(), t.Minute(), t.Second())
+func SaleMessageContruct(sMti string, req request.CargoRequest) request.SaleRequest {
 
-}
-
-func formateaCampo12() {
-	campo12 = fmt.Sprintf("%02d%02d%02d",
-		t.Hour(), t.Minute(), t.Second())
-}
-
-func formateaCampo13() {
-	campo13 = fmt.Sprintf("%02d%02d",
-		t.Month(), t.Day())
-}
-
-func formateaCampo17() {
-	campo17 = fmt.Sprintf("%02d%02d",
-		t.Month(), t.Day())
-}
-
-func New(req request.SaleRequest) {
-	formateaCampo4(req.Amount)
-	formateaCampo7()
-	formateaCampo12()
-	formateaCampo13()
-	formateaCampo17()
-}
-
-func SaleMessage(sMti string, req request.SaleRequest) responses.SaleResponse {
-
-	New(req)
-	res := responses.SaleResponse{
+	NewCargoMessage(req)
+	res := request.SaleRequest{
 		MTI:                 sMti,
-		ProccesingCode:      req.ProccesingCode,
-		Amount:              campo4,
-		TransmitionDataTime: campo7,
-		SystemTrace:         req.SystemTrace,
-		LocalTime:           campo12,
-		LocalDate:           campo13,
-		DateCapture:         campo17,
-		MerchantType:        req.MerchantType,
-		ServiceEntry:        req.ServiceEntry,
-		ServiceCondition:    req.ServiceCondition,
+		ProccesingCode:      Campo3,
+		Amount:              Campo4,
+		TransmitionDataTime: Campo7,
+		SystemTrace:         Campo11,
+		LocalTime:           Campo12,
+		LocalDate:           Campo13,
+		DateCapture:         Campo17,
+		MerchantType:        Campo18,
+		ServiceEntry:        Campo22,
+		ServiceCondition:    Campo25,
+		AcquiringIDCode:     Campo32,
+		RetrievalReference:  Campo37,
+		CardAcceptTerminal:  Campo41,
+		RetailerData:        Campo48,
+		CurrencyCode:        Campo49,
+		TerminalData:        Campo60,
 	}
 
 	return res
