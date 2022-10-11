@@ -7,7 +7,7 @@ import (
 	"gin-Cratos/request"
 )
 
-func InsertRequest(request request.CargoRequest) bool {
+func InsertRequest(request request.CargoRequest, messageRequest request.SaleRequest) bool {
 	bin := request.Tarjeta.Pan[0:5]
 	terminacion := request.Tarjeta.Pan[12:15]
 	request.Tarjeta.Pan = bin + "******" + terminacion
@@ -20,7 +20,14 @@ func InsertRequest(request request.CargoRequest) bool {
 	}
 	fmt.Println(string(requestJson))
 
-	insert, err := config.DB.Query("INSERT INTO transaccion VALUES ( ?, ? )", request.UUID, requestJson)
+	messageJson, err := json.Marshal(messageRequest)
+	if err != nil {
+		fmt.Println(err)
+		return false
+	}
+	fmt.Println(string(messageJson))
+
+	insert, err := config.DB.Query("INSERT INTO transaccion VALUES ( ?, ?, ? )", request.UUID, requestJson, messageJson)
 
 	// if there is an error inserting, handle it
 	if err != nil {
