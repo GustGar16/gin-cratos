@@ -8,4 +8,6 @@ import (
 
 func MainRoute(router *gin.Engine) {
 	router.POST("/cargo", controllers.NewCargo())
+
+	router.GET("/transaccion/:uuid", controllers.GetTransaccion())
 }

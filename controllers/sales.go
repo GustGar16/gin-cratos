@@ -5,8 +5,8 @@ import (
 	"gin-Cratos/responses"
 	"net/http"
 
+	"gin-Cratos/services/database"
 	"gin-Cratos/services/mainStruct"
-
 	"gin-Cratos/services/messages"
 
 	"github.com/gin-gonic/gin"
@@ -37,6 +37,11 @@ func NewCargo() gin.HandlerFunc {
 		mainStruct.New()
 		SetMTI("0200")
 		message := messages.SaleMessageContruct(mti, request)
+
+		if !database.InsertRequest(request) {
+			c.JSON(http.StatusBadRequest, responses.GeneralResponse{Status: http.StatusBadRequest, Message: "error", Data: map[string]string{"error": "Error al almacenar la informacion: " + request.UUID}})
+			return
+		}
 
 		c.JSON(http.StatusOK, responses.GeneralResponse{Status: http.StatusOK, Message: "success", Data: message})
 
