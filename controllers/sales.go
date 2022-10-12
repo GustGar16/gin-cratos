@@ -36,7 +36,11 @@ func NewCargo() gin.HandlerFunc {
 		}
 		mainStruct.New()
 		SetMTI("0200")
-		message := messages.SaleMessageContruct(mti, request)
+		message, err := messages.SaleMessageContruct(mti, request)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, responses.GeneralResponse{Status: http.StatusBadRequest, Message: "error", Data: map[string]string{"error": err.Error()}})
+			return
+		}
 
 		if !database.InsertRequest(request, message) {
 			c.JSON(http.StatusBadRequest, responses.GeneralResponse{Status: http.StatusBadRequest, Message: "error", Data: map[string]string{"error": "Error al almacenar la informacion: " + request.UUID}})

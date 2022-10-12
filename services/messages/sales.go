@@ -4,12 +4,12 @@ import (
 	"gin-Cratos/request"
 )
 
-func NewCargoMessage(req request.CargoRequest) {
+func newCargoMessage(req request.CargoRequest) {
 	FormateaCampo3(req.Tipo)
 	FormateaCampo4(req.Monto)
 	FormateaCampo7()
-	FormateaCampo12()
 	FormateaCampo11()
+	FormateaCampo12()
 	FormateaCampo13()
 	FormateaCampo17()
 	FormateaCampo18()
@@ -22,9 +22,9 @@ func NewCargoMessage(req request.CargoRequest) {
 	FormateaCampo49(req.Moneda)
 }
 
-func SaleMessageContruct(sMti string, req request.CargoRequest) request.SaleRequest {
+func SaleMessageContruct(sMti string, req request.CargoRequest) (request.SaleRequest, error) {
 
-	NewCargoMessage(req)
+	newCargoMessage(req)
 	res := request.SaleRequest{
 		MTI:                 sMti,
 		ProccesingCode:      Campo3,
@@ -45,5 +45,5 @@ func SaleMessageContruct(sMti string, req request.CargoRequest) request.SaleRequ
 		TerminalData:        Campo60,
 	}
 
-	return res
+	return res, nil
 }

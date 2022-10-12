@@ -18,4 +18,12 @@ type ReversalResponse struct {
 	CardAcceptTerminal  string `json:"card_acceptor,omitempty"`
 	CurrencyCode        string `json:"currency_code,omitempty"`
 	AdditionalAmounts   string `json:"additional_amounts,omitempty"`
+	CardIssuer          string `json:"card_issuer,omitempty"`
+	PostalCode          string `json:"postal_code,omitempty"`
+	AdditionalData      string `json:"additional_data,omitempty"`
+	OriginalData        string `json:"original_data,omitempty"`
+	AccountID1          string `json:"account_id,omitempty"`
+	TerminalAddress     string `json:"terminal_address,omitempty"`
+	AuthIndicators      string `json:"auth_indicators,omitempty"`
+	PosPreauthData      string `json:"pos_preauth,omitempty"`
 }
