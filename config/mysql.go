@@ -7,9 +7,9 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var DB *sql.DB = Connect()
+var DB *sql.DB = MysqlConnect()
 
-func Connect() *sql.DB {
+func MysqlConnect() *sql.DB {
 	DB, err := sql.Open("mysql", myEnv["DB_USER"]+":"+myEnv["DB_PASS"]+"@tcp("+myEnv["DB_URL"]+":"+myEnv["DB_PORT"]+")/"+myEnv["DB_NAME"])
 	if err != nil {
 		panic(err.Error())
@@ -18,6 +18,6 @@ func Connect() *sql.DB {
 	return DB
 }
 
-func Close() {
+func MysqlClose() {
 	DB.Close()
 }

@@ -11,8 +11,11 @@ func main() {
 	//inicializamos la configuracion por default para la declaracion de rutas
 	router := gin.Default()
 
-	config.Connect()
-	defer config.Close()
+	config.MysqlConnect()
+	defer config.MysqlClose()
+	//Redis
+	config.RedisConnect()
+
 	//Rutas declaradas
 	routes.MainRoute(router)
 	//Iniciamos el ruteo en el puerto declarado
