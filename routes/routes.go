@@ -7,6 +7,7 @@ import (
 )
 
 func MainRoute(router *gin.Engine) {
+	controllers.RedisTest()
 	router.POST("/cargo", controllers.NewCargo())
 	router.POST("/cancelacion/:uuid", controllers.NewCancelacion())
 

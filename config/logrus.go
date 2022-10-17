@@ -1,24 +1,37 @@
 package config
 
 import (
-	//"os"
+	"fmt"
+	"io"
+	"os"
+
+	graylog "github.com/gemnasium/logrus-graylog-hook/v3"
 	logger "github.com/sirupsen/logrus"
 )
+
+var logrusMessage = make(map[string]interface{})
 
 func init() {
 	logger.SetFormatter(&logger.TextFormatter{
 		DisableColors: false,
 		FullTimestamp: true,
 	})
-	//TODO: checar si se debe almacenar en archivo o solo mostrar en consola
-	//file, _ := os.OpenFile("apllication.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
-	//logger.SetOutput(file)
+	setDefaultGraylogInfo()
+	//comunicacion con graylog
+	hook := graylog.NewGraylogHook(myEnv["GRAYLOG_HOST"], logrusMessage)
+	logger.AddHook(hook)
+	//Impresión de log en archivo y en consola
+	file, err := os.OpenFile(myEnv["CRATOS_LOG_FILE"], os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		fmt.Println("error al abrir archivo de log: " + err.Error())
+	}
+	logger.SetOutput(io.MultiWriter(file, os.Stdout))
 }
+
 func CreateLog(logType string, message string, function string) bool {
-	log := logger.WithField("function", function)
 	switch logType {
 	case "info":
-		log.Info(message)
+		logger.WithField("full_message", function).Info("Cratos::INFO")
 
 	case "debug":
 		logger.Debug(message)
@@ -33,4 +46,9 @@ func CreateLog(logType string, message string, function string) bool {
 		logger.Error(message)
 	}
 	return true
+}
+
+func setDefaultGraylogInfo() {
+	logrusMessage["version"] = myEnv["CRATOS_VERSION"]
+	logrusMessage["host"] = myEnv["CRATOS_HOST"]
 }
