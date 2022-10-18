@@ -18,10 +18,10 @@ func init() {
 	})
 	setDefaultGraylogInfo()
 	//comunicacion con graylog
-	hook := graylog.NewGraylogHook(myEnv["GRAYLOG_HOST"], logrusMessage)
+	hook := graylog.NewGraylogHook(GetEnv("GRAYLOG_HOST", "localhost:12201"), logrusMessage)
 	logger.AddHook(hook)
 	//Impresión de log en archivo y en consola
-	file, err := os.OpenFile(myEnv["CRATOS_LOG_FILE"], os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	file, err := os.OpenFile(GetEnv("CRATOS_LOG_FILE", "app.log"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
 		fmt.Println("error al abrir archivo de log: " + err.Error())
 	}
@@ -49,6 +49,6 @@ func CreateLog(logType string, message string, function string) bool {
 }
 
 func setDefaultGraylogInfo() {
-	logrusMessage["version"] = myEnv["CRATOS_VERSION"]
-	logrusMessage["host"] = myEnv["CRATOS_HOST"]
+	logrusMessage["version"] = GetEnv("CRATOS_VERSION")
+	logrusMessage["host"] = GetEnv("CRATOS_HOST")
 }
