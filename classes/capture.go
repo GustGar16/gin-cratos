@@ -13,10 +13,15 @@ type CaptureMessage struct {
 	ServiceEntry        string `json:"service_entry"`
 	ServiceCondition    string `json:"service_condition"`
 	AcquiringIDCode     string `json:"acquiring_id_code"`
+	Track2Data          string `json:"track_two"`
 	RetrievalReference  string `json:"retrieval_ref,omitempty"`
+	AuthIDResponse      string `json:"authid_response,omitempty"`
+	ResponseCode        string `json:"response_code,omitempty"`
 	CardAcceptTerminal  string `json:"card_acceptor,omitempty"`
 	CardAcceptorCode    string `json:"card_acceptor_code,omitempty"`
 	CardAcceptorName    string `json:"card_acceptor_name,omitempty"`
+	Track1Data          string `json:"track_one"`
+	AdditionalResponse  string `json:"additonal_response,omitempty"`
 	RetailerData        string `json:"retailer_data,omitempty"`
 	CurrencyCode        string `json:"currency_code,omitempty"`
 	AdditionalAmounts   string `json:"additional_amounts,omitempty"`
@@ -27,8 +32,10 @@ type CaptureMessage struct {
 	OriginalData        string `json:"original_data,omitempty"`
 	ReplacementAmounts  string `json:"replacement_amounts,omitempty"`
 	ReceivingIDCode     string `json:"receiving_id_code,omitempty"`
+	AccountID1          string `json:"account_id,omitempty"`
 	TerminalAddress     string `json:"terminal_address,omitempty"`
 	AuthIndicators      string `json:"auth_indicators,omitempty"`
+	CardIssuerID        string `json:"card_issuer_id,omitempty"`
 	PosInvoiceData      string `json:"pos_invoice_data,omitempty"`
 	PosSettlementData   string `json:"pos_settlement,omitempty"`
 	PosPreauthData      string `json:"pos_preauth,omitempty"`

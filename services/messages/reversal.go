@@ -14,6 +14,7 @@ func newCancelacionMessage(req classes.SaleMessage) {
 	FormateaCampo17()
 	FormateaCampo18()
 	FormateaCampo32("12")
+	FormateaCampo90(req.MTI, req.RetrievalReference, req.LocalDate, req.LocalTime, req.DateCapture)
 }
 
 func ReversalMessageContruct(mti string, req request.CancelacionRequest) (classes.ReversalMessage, error) {
@@ -35,6 +36,7 @@ func ReversalMessageContruct(mti string, req request.CancelacionRequest) (classe
 	reversalData.ServiceEntry = respuesta.ServiceEntry
 	reversalData.ServiceCondition = respuesta.ServiceCondition
 	reversalData.AcquiringIDCode = Campo32
+	reversalData.OriginalData = Campo90
 
 	return reversalData, nil
 

@@ -14,8 +14,8 @@ var Campo3, Campo4, Campo7, Campo11, Campo12, Campo13, Campo17, Campo18, Campo22
 var Campo41 = "0000CP01        "
 var Campo42 string //Pendiente de revisar
 var Campo43 string //Pendiente de revisar
-var Campo48, Campo49, Campo54, Campo61, Campo62, Campo63, Campo90, Campo95, Campo100, Campo120, Campo121, Campo123, Campo125, Campo126 string
-var Campo60 = "CLPGTES1+0000000"
+var Campo48, Campo49, Campo54, Campo61, Campo62, Campo63, Campo90, Campo95, Campo100, Campo120, Campo121, Campo122, Campo123, Campo125, Campo126 string
+var Campo60 string
 
 func FormateaCampo3(tipo string) {
 	result := ""
@@ -126,8 +126,13 @@ func FormateaCampo54(value string) {
 	Campo54 = fmt.Sprintf("%012s", data)
 }
 
+func FormateaCampo60() {
+	Campo60 += "016"
+	Campo60 += "CLPGTES1+0000000"
+}
+
 func FormateaCampo61() {
-	Campo61 = ""
+	Campo61 += "019"
 }
 
 func FormateaCampo62(cp string) {
@@ -139,8 +144,18 @@ func FormateaCampo63() {
 	Campo63 = ""
 }
 
-func FormateaCampo90() {
-	Campo90 = ""
+func FormateaCampo90(mti, reference, date, time, captureDate string) {
+	Campo90 = mti
+	if reference != "" {
+		Campo90 += reference
+	} else {
+		Campo90 += "000000000000"
+	}
+	Campo90 += date
+	Campo90 += time
+	Campo90 += "00"
+	Campo90 += captureDate
+	Campo90 += "          "
 }
 
 func FormateaCampo95() {
@@ -152,21 +167,25 @@ func FormateaCampo100() {
 }
 
 func FormateaCampo120() {
-	Campo120 = ""
+	Campo120 = "029"
 }
 
 func FormateaCampo121() {
-	Campo121 = ""
+	Campo121 = "020"
+}
+
+func FormateaCampo122() {
+	Campo122 = "011"
 }
 
 func FormateaCampo123() {
-	Campo123 = ""
+	Campo123 = "020"
 }
 
 func FormateaCampo125() {
-	Campo125 = ""
+	Campo125 = "012"
 }
 
 func FormateaCampo126() {
-	Campo126 = ""
+	Campo126 = "038"
 }
