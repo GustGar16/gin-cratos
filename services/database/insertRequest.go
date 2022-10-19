@@ -3,11 +3,12 @@ package database
 import (
 	"encoding/json"
 	"fmt"
+	"gin-Cratos/classes"
 	"gin-Cratos/config"
 	"gin-Cratos/request"
 )
 
-func InsertRequest(request request.CargoRequest, messageRequest request.SaleRequest) bool {
+func InsertRequest(request request.CargoRequest, messageRequest classes.SaleMessage) bool {
 	bin := request.Tarjeta.Pan[0:5]
 	terminacion := request.Tarjeta.Pan[12:15]
 	request.Tarjeta.Pan = bin + "******" + terminacion

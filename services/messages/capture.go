@@ -7,23 +7,23 @@ import (
 )
 
 func newCaptureMessage(req request.CapturaRequest) {
-	FormateaCampo3(req.Tipo)
+	//FormateaCampo3(req.Tipo)
 	FormateaCampo4(req.Monto)
 	FormateaCampo7()
 	FormateaCampo11()
 	FormateaCampo12()
-	FormateaCampo13()
-	FormateaCampo17()
-	FormateaCampo18()
-	FormateaCampo22(req.Tipo)
-	FormateaCampo25()
-	FormateaCampo32("12")
-	FormateaCampo35(req.Tarjeta.Pan, req.Tarjeta.ExpAnio, req.Tarjeta.ExpMes)
-	FormateaCampo37()
-	FormateaCampo48(req.Afiliacion)
+	//FormateaCampo13()
+	//FormateaCampo17()
+	//FormateaCampo18()
+	//FormateaCampo22(req.Tipo)
+	//FormateaCampo25()
+	//FormateaCampo32("12")
+	//FormateaCampo35(req.Tarjeta.Pan, req.Tarjeta.ExpAnio, req.Tarjeta.ExpMes)
+	//FormateaCampo37()
+	//FormateaCampo48(req.Afiliacion)
 	//FormateaCampo42()
 	//FormateaCampo43()
-	FormateaCampo49(req.Moneda)
+	//FormateaCampo49(req.Moneda)
 	//FormateaCampo54(req.Monto)
 	//FormateaCampo61()
 	//FormateaCampo63()
@@ -53,7 +53,7 @@ func CaptureMessageContruct(sMti string, req request.CapturaRequest) (classes.Ca
 		LocalTime:           Campo12,
 		LocalDate:           Campo13,
 		DateCapture:         Campo17,
-		MerchantType:        Campo18,
+		MerchantType:        respuesta.MerchantType,
 		ServiceEntry:        Campo22,
 		ServiceCondition:    Campo25,
 		AcquiringIDCode:     Campo32,

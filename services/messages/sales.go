@@ -1,6 +1,7 @@
 package messages
 
 import (
+	"gin-Cratos/classes"
 	"gin-Cratos/request"
 )
 
@@ -35,10 +36,10 @@ func newCargoMessage(req request.CargoRequest) {
 	//FormateaCampo126()
 }
 
-func SaleMessageContruct(sMti string, req request.CargoRequest) (request.SaleRequest, error) {
+func SaleMessageContruct(sMti string, req request.CargoRequest) (classes.SaleMessage, error) {
 
 	newCargoMessage(req)
-	res := request.SaleRequest{
+	res := classes.SaleMessage{
 		MTI:                 sMti,
 		ProccesingCode:      Campo3,
 		Amount:              Campo4,

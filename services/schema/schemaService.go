@@ -1,4 +1,4 @@
-package struct
+package schema
 
 import (
 	"fmt"
