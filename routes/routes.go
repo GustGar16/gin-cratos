@@ -7,9 +7,11 @@ import (
 )
 
 func MainRoute(router *gin.Engine) {
-	controllers.RedisTest()
-	router.POST("/cargo", controllers.NewCargo())
-	router.POST("/cancelacion/:uuid", controllers.NewCancelacion())
-
+	router.POST("/cargo", controllers.Cargo())
+	router.POST("/cancelacion/:uuid", controllers.Cancelacion())
+	/*
+		router.POST("/reembolso/:uuid", controllers.Reembolso())
+		router.POST("/captura/:uuid", controllers.Captura())
+	*/
 	router.GET("/transaccion/:uuid", controllers.GetTransaccion())
 }

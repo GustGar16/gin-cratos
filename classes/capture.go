@@ -1,6 +1,6 @@
-package request
+package classes
 
-type SaleRequest struct {
+type CaptureMessage struct {
 	MTI                 string `json:"mti"`
 	ProccesingCode      string `json:"proccesing_code"`
 	Amount              string `json:"amount"`

@@ -1,10 +1,12 @@
 package messages
 
 import (
+	"gin-Cratos/classes"
 	"gin-Cratos/request"
+	"gin-Cratos/services/database"
 )
 
-func newCargoMessage(req request.CargoRequest) {
+func newCaptureMessage(req request.CapturaRequest) {
 	FormateaCampo3(req.Tipo)
 	FormateaCampo4(req.Monto)
 	FormateaCampo7()
@@ -35,10 +37,14 @@ func newCargoMessage(req request.CargoRequest) {
 	//FormateaCampo126()
 }
 
-func SaleMessageContruct(sMti string, req request.CargoRequest) (request.SaleRequest, error) {
-
-	newCargoMessage(req)
-	res := request.SaleRequest{
+func CaptureMessageContruct(sMti string, req request.CapturaRequest) (classes.CaptureMessage, error) {
+	var captureData classes.CaptureMessage
+	respuesta, err := database.GetMessageRequest(req.UUID)
+	if err != nil {
+		return captureData, err
+	}
+	newCaptureMessage(req)
+	res := classes.CaptureMessage{
 		MTI:                 sMti,
 		ProccesingCode:      Campo3,
 		Amount:              Campo4,

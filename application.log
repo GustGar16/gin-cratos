@@ -1,0 +1,1 @@
+time="2022-10-18T16:38:19-05:00" level=info msg="Cratos::INFO" func=gin-Cratos/config.CreateLog file="/home/gustavo/prsnl/cursos/golang/src/gin-Cratos/config/logrus.go:35" full_message="controller/testRedis::RedisTest()"

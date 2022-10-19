@@ -16,6 +16,7 @@ func init() {
 		DisableColors: false,
 		FullTimestamp: true,
 	})
+	logger.SetReportCaller(true)
 	setDefaultGraylogInfo()
 	//comunicacion con graylog
 	hook := graylog.NewGraylogHook(GetEnv("GRAYLOG_HOST", "localhost:12201"), logrusMessage)
@@ -31,7 +32,7 @@ func init() {
 func CreateLog(logType string, message string, function string) bool {
 	switch logType {
 	case "info":
-		logger.WithField("full_message", function).Info("Cratos::INFO")
+		logger.WithField("full_message", message).Info("Cratos::INFO")
 
 	case "debug":
 		logger.Debug(message)

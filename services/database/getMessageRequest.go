@@ -3,17 +3,17 @@ package database
 import (
 	"encoding/json"
 	"fmt"
+	"gin-Cratos/classes"
 	"gin-Cratos/config"
-	"gin-Cratos/request"
 )
 
-func GetMessageRequest(transaccionId string) (request.SaleRequest, error) {
+func GetMessageRequest(transaccionId string) (classes.SaleMessage, error) {
 
 	q := "SELECT messageRequest FROM transaccion WHERE uuid = ?"
 	row := config.DB.QueryRow(q, transaccionId)
 
 	respuesta := ""
-	data := request.SaleRequest{}
+	data := classes.SaleMessage{}
 	err := row.Scan(&respuesta)
 
 	if err != nil {

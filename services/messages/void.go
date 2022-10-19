@@ -1,12 +1,11 @@
 package messages
 
 import (
-	"gin-Cratos/classes"
 	"gin-Cratos/request"
 	"gin-Cratos/services/database"
 )
 
-func newCancelacionMessage(req classes.SaleMessage) {
+func newCancelacionAutoMessage(req request.SaleRequest) {
 	FormateaCampo7()
 	FormateaCampo11()
 	FormateaCampo12()
@@ -16,13 +15,13 @@ func newCancelacionMessage(req classes.SaleMessage) {
 	FormateaCampo32("12")
 }
 
-func ReversalMessageContruct(mti string, req request.CancelacionRequest) (classes.ReversalMessage, error) {
-	var reversalData classes.ReversalMessage
+func VoidMessageContruct(mti string, req request.CancelacionRequest) (request.ReversalRequest, error) {
+	var reversalData request.ReversalRequest
 	respuesta, err := database.GetMessageRequest(req.UUID)
 	if err != nil {
 		return reversalData, err
 	}
-	newCancelacionMessage(respuesta)
+	newCancelacionAutoMessage(respuesta)
 
 	reversalData.ProccesingCode = respuesta.ProccesingCode
 	reversalData.Amount = respuesta.Amount

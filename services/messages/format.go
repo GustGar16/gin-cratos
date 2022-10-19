@@ -14,7 +14,7 @@ var Campo3, Campo4, Campo7, Campo11, Campo12, Campo13, Campo17, Campo18, Campo22
 var Campo41 = "0000CP01        "
 var Campo42 string //Pendiente de revisar
 var Campo43 string //Pendiente de revisar
-var Campo48, Campo49 string
+var Campo48, Campo49, Campo54, Campo61, Campo62, Campo63, Campo90, Campo95, Campo100, Campo120, Campo121, Campo123, Campo125, Campo126 string
 var Campo60 = "CLPGTES1+0000000"
 
 func FormateaCampo3(tipo string) {
@@ -65,7 +65,6 @@ func FormateaCampo17() {
 		t.Month(), t.Day())
 }
 
-// TODO: revisar el giro de comercio para verificar el return
 func FormateaCampo18() {
 	Campo18 = "1234"
 }
@@ -82,7 +81,6 @@ func FormateaCampo22(tipo string) {
 	Campo22 = result
 }
 
-// TODO: Revisar si este Campo es obligatorio o solo usara el default (00)
 func FormateaCampo25() {
 	Campo25 = "00"
 }
@@ -102,6 +100,14 @@ func FormateaCampo37() {
 	Campo37 = helpers.NewRandomNumber(12)
 }
 
+func FormateaCampo42() {
+	Campo42 = ""
+}
+
+func FormateaCampo43() {
+	Campo43 = ""
+}
+
 func FormateaCampo48(afiliacion string) {
 	Campo48 += afiliacion
 	Campo48 += "            00000000"
@@ -113,4 +119,54 @@ func FormateaCampo49(moneda string) {
 	} else {
 		Campo49 = "840"
 	}
+}
+
+func FormateaCampo54(value string) {
+	data := strings.Replace(value, ".", "", -1)
+	Campo54 = fmt.Sprintf("%012s", data)
+}
+
+func FormateaCampo61() {
+	Campo61 = ""
+}
+
+func FormateaCampo62(cp string) {
+	Campo62 += "010"
+	Campo62 += fmt.Sprintf("'%-10s'", cp)
+}
+
+func FormateaCampo63() {
+	Campo63 = ""
+}
+
+func FormateaCampo90() {
+	Campo90 = ""
+}
+
+func FormateaCampo95() {
+	Campo95 = ""
+}
+
+func FormateaCampo100() {
+	Campo100 = ""
+}
+
+func FormateaCampo120() {
+	Campo120 = ""
+}
+
+func FormateaCampo121() {
+	Campo121 = ""
+}
+
+func FormateaCampo123() {
+	Campo123 = ""
+}
+
+func FormateaCampo125() {
+	Campo125 = ""
+}
+
+func FormateaCampo126() {
+	Campo126 = ""
 }
